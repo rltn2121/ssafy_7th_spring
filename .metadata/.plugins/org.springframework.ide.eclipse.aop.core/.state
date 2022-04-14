@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="WordCloud"/>
+<aop-project name="spring_di_annotation"/>
+<aop-project name="spring_di_xmlconfig"/>
+<aop-project name="WordCloud-2"/>
+<aop-project name="hello_di"/>
+<aop-project name="SpringBasic"/>
+<aop-project name="SpringMVC"/>
+<aop-project name="spring_di_javaconfig"/>
+<aop-project name="spring_hw_1_2"/>
+</aop-reference-model>

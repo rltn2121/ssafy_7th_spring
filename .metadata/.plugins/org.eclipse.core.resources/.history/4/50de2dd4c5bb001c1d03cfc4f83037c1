@@ -1,0 +1,15 @@
+
+public class Test {
+	public static void main(String[] args) throws Exception {
+//		MyReflection mr = new MyReflection();
+//		mr.aboutMe();
+		
+		String className = "MyReflection";
+		Class<?> myClass = Class.forName(className);
+		
+		MyReflection mf = (MyReflection)myClass.getDeclaredConstructor().newInstance();
+		mf.aboutMe();
+		
+		Method m = myClass.getMethod("robot", int.class);
+	}
+}

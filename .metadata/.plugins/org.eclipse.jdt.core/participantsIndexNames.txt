@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+C:\Users\박기수\Desktop\SSAFY\ssafy_spring_live\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1686169984.index
+\SpringMVC\src\main\java
+C:\Users\박기수\Desktop\SSAFY\ssafy_spring_live\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2658272158.index
+\SpringBasic\src\main\java
+C:\Users\박기수\Desktop\SSAFY\ssafy_spring_live\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\12320644.index
+\spring_hw_1_2\src
