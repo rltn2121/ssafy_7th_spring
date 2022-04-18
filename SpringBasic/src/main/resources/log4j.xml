@@ -11,8 +11,13 @@
 	</appender>
 	
 	<!-- Application Loggers -->
+	<!-- (일반적, 일상적) Trace > debug > info > warning > error > fatal (심각, 오류) -->
 	<logger name="com.mycom.myapp">
 		<level value="info" />
+	</logger>
+	
+	<logger name="com.mycom.myapp.aspect">
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

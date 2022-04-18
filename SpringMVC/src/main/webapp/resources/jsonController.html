@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1> JSON Test </h1>
+	<button id="sendEmp">Emp 보내기</button>
+	<button id="sendEmpList">EmpList 보내기</button>
+	<button id="receiveEmp">Emp 받기</button>
+	<button id="receiveEmpList">EmpList 받기</button>
+	<button id="localDateTime">LocalDateTime 받기</button>
+	
+   <script type="text/javascript">
+		const emp = {
+				employeeId: 1500,
+				firstName: 'Gildong',
+				lastName: 'Hong',
+				email: 'gildong@hong',
+				hireDate: '2022-04-15'
+		} 
+		
+		const empList = [
+			{
+				employeeId: 1500,
+				firstName: 'Gildong',
+				lastName: 'Hong',
+				email: 'gildong@hong',
+				hireDate: '2022-04-15'
+			},
+			{
+				employeeId: 1501,
+				firstName: 'Gildong',
+				lastName: 'Park',
+				email: 'gildong@park',
+				hireDate: '2022-04-11'
+			},
+			{
+				employeeId: 1502,
+				firstName: 'Gildong',
+				lastName: 'Cho',
+				email: 'gildong@cho',
+				hireDate: '2022-04-16'
+			},
+		]
+		window.onload = function(){
+			document.querySelector("#sendEmp").onclick = async function(){
+				
+				let fetchOption = {
+						method : 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body:JSON.stringify(emp)
+				}
+				
+				try {
+					let response = await fetch('/myapp/emp', fetchOption);
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			
+			document.querySelector("#sendEmpList").onclick = async function(){
+				
+				let fetchOption = {
+						method : 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body:JSON.stringify(empList)
+				}
+				
+				try {
+					let response = await fetch('/myapp/empList', fetchOption);
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			
+			document.querySelector("#receiveEmp").onclick = async function(){
+				
+				let fetchOption = {
+						method : 'GET'
+				}
+				
+				try {
+					let response = await fetch('/myapp/empDetail/123', fetchOption);
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			
+			document.querySelector("#receiveEmpList").onclick = async function(){
+				
+				let fetchOption = {
+						method : 'GET'
+				}
+				
+				try {
+					let response = await fetch('/myapp/empList', fetchOption);
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			
+			document.querySelector("#localDateTime").onclick = async function(){
+				
+				let fetchOption = {
+						method : 'GET'
+				}
+				
+				try {
+					let response = await fetch('/myapp/LocalDateTime', fetchOption);
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+		}
+	</script>
+</body>
+</html>
