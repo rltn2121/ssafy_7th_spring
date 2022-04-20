@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>MyBatis Test</h1>
+	<button id="btnDepartmentDetail">Department 상세</button>
+	<button id="btnDepartmentList">Department 목록</button>
+	<button id="btnDepartmentInsert">Department 등록</button>
+	<button id="btnDepartmentUpdate">Department 수정</button>
+	<button id="btnDepartmentDelete">Department 삭제</button>
+	<br>
+	<button id="btnDepartmentInsertJSON">Department JSON 등록</button>
+	<button id="btnDepartmentDetailPage">Department 상세 페이지 이동</button>
+	<br><br>
+	<button id="btnEmp">Emp 페이지로 이동</button>
+	<script>
+		window.onload = function(){
+			document.querySelector("#btnEmp").onclick = async function(){
+				// 백엔드로 특정 DepartmentId를 전송하면 백엔드에서 그 사원의 정보를 jsp로 보여준다.
+				window.location.href="/mybatis/resources/DBTest.html"
+			}
+			
+			document.querySelector("#btnDepartmentDetail").onclick = async function(){
+				try{
+					let response = await fetch('/mybatis/department/1');
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			document.querySelector("#btnDepartmentDetailPage").onclick = async function(){
+				window.location.href="/mybatis/department/detail/1"
+			}
+			document.querySelector("#btnDepartmentList").onclick = async function(){
+				try{
+					let response = await fetch('/mybatis/department/list');
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			
+			document.querySelector("#btnDepartmentInsert").onclick = 
+				async function(){
+					let urlParams = new URLSearchParams({
+						DepartmentId: 2000,
+						name: "신규부서",
+					})
+					
+					let fetchOptions = {
+						method: "POST",
+						body: urlParams
+					}
+				
+					try{
+						let response = await fetch('/mybatis/department', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			let updateData = {
+				DepartmentId: 2000,
+				name: "임시부서명"
+			}
+			
+			document.querySelector("#btnDepartmentUpdate").onclick = 
+				async function(){
+					let urlParams = new URLSearchParams(updateData)
+					
+					let fetchOptions = {
+						method: "PATCH",
+						body: urlParams
+					}
+				
+					try{
+						let response = await fetch('/mybatis/department/update', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			document.querySelector("#btnDepartmentDelete").onclick = 
+				async function(){
+					let fetchOptions = {
+						method: "POST",
+						body: new URLSearchParams({departmentId: 2000})
+					}
+				
+					try{
+						let response = await fetch('/mybatis/department/delete', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			let insertJSONData = {
+					DepartmentId: 2000,
+					name:"신규 부서"
+				}
+			document.querySelector("#btnDepartmentInsertJSON").onclick = 
+				async function(){
+					let fetchOptions = {
+						method: "POST",
+						headers: {
+							"Content-type": "application/json"
+						},
+						body: JSON.stringify(insertJSONData)
+					}
+				
+					try{
+						let response = await fetch('/mybatis/department/json', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+		
+		}
+	</script>
+</body>
+</html>

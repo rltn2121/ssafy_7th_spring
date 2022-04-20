@@ -19,6 +19,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@Autowired
 	private HelloService helloService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)

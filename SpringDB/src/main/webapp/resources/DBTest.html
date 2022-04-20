@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>DB Test</h1>
+	<button id="btnEmpDetail">Emp 상세</button>
+	<button id="btnEmpList">Emp 목록</button>
+	<button id="btnEmpInsert">Emp 등록</button>
+	<button id="btnEmpUpdate">Emp 수정</button>
+	<button id="btnEmpDelete">Emp 삭제</button>
+	<br>
+	<button id="btnEmpInsertJSON">Emp JSON 등록</button>
+	<button id="btnEmpDetailPage">Emp 상세 페이지 이동</button>
+	<script>
+		window.onload = function(){
+			document.querySelector("#btnEmpDetail").onclick = async function(){
+				try{
+					let response = await fetch('/mydb/empDetail/1500');
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			document.querySelector("#btnEmpDetailPage").onclick = async function(){
+				// 백엔드로 특정 employeeId를 전송하면 백엔드에서 그 사원의 정보를 jsp로 보여준다.
+				window.location.href="/mydb/empDetailPage/1500"
+			}
+			document.querySelector("#btnEmpList").onclick = async function(){
+				try{
+					let response = await fetch('/mydb/empList');
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			
+			document.querySelector("#btnEmpInsert").onclick = 
+				async function(){
+					let urlParams = new URLSearchParams({
+						employeeId: 2000,
+						firstName: "ny",
+						lastName: "Son",
+						email: "sonny@son.com",
+						hireDate: "2020-05-05"
+					})
+					
+					let fetchOptions = {
+						method: "POST",
+						body: urlParams
+					}
+				
+					try{
+						let response = await fetch('/mydb/empInsert', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			let updateData = {
+				employeeId: 2001,
+				firstName: "흥민",
+				lastName: "손",
+				email: "sonny@son.com",
+				hireDate: "2020-05-05"
+			}
+			
+			document.querySelector("#btnEmpUpdate").onclick = 
+				async function(){
+					let urlParams = new URLSearchParams(updateData)
+					
+					let fetchOptions = {
+						method: "POST",
+						body: urlParams
+					}
+				
+					try{
+						let response = await fetch('/mydb/empUpdate', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			document.querySelector("#btnEmpDelete").onclick = 
+				async function(){
+					let fetchOptions = {
+						method: "POST",
+						body: new URLSearchParams({employeeId: 2000})
+					}
+				
+					try{
+						let response = await fetch('/mydb/empDelete', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			
+			
+			
+			let insertJSONData = {
+					employeeId: 2000,
+					firstName: "흥민",
+					lastName: "손",
+					email: "sonny@son.com",
+					hireDate: "2020-05-05"
+				}
+			document.querySelector("#btnEmpInsertJSON").onclick = 
+				async function(){
+					let fetchOptions = {
+						method: "POST",
+						headers: {
+							"Content-type": "application/json"
+						},
+						body: JSON.stringify(insertJSONData)
+					}
+				
+					try{
+						let response = await fetch('/mydb/empInsertJSON', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

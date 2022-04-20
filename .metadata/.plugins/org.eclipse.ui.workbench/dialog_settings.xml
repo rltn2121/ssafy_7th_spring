@@ -7,15 +7,22 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jst.jsp.ui.internal.wizard.NewJSPWizard"/>
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.wst.web.ui"/>
+			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory"/>
+			<item value="org.eclipse.jst.ws.ui.new"/>
+			<item value="org.eclipse.wst.XMLCategory"/>
+			<item value="org.eclipse.ui.Examples"/>
 		</list>
 	</section>
 	<section name="FileSystemImportWizard">
 		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
 		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\박기수\Downloads\spring_hw_2_2-master\spring_hw_2_2-master"/>
+			<item value="C:\Users\박기수\Downloads\소스코드\220419\framework_0419_배포\guestbook_file_interceptor"/>
+			<item value="C:\Users\박기수\Downloads\소스코드\220419\framework_0419_배포\guestbook_springmvc"/>
+			<item value="C:\Users\박기수\Downloads\소스코드\220419\framework_0419_배포\guestbook_spring"/>
 			<item value="C:\Users\박기수\Downloads\소스코드\220418\0418_배포\spring_webmvc"/>
 			<item value="C:\Users\박기수\Desktop\SSAFY\Spring\WordCloud-2"/>
 			<item value="C:\Users\박기수\Desktop\SSAFY\Spring\WordCloud"/>
