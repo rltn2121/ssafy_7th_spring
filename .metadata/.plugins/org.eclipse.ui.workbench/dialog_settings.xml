@@ -7,18 +7,19 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard"/>
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.wst.html.ui.internal.wizard.NewHTMLWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory"/>
-			<item value="org.eclipse.jst.ws.ui.new"/>
-			<item value="org.eclipse.wst.XMLCategory"/>
-			<item value="org.eclipse.ui.Examples"/>
+			<item value="org.eclipse.wst.web.ui"/>
 		</list>
 	</section>
 	<section name="FileSystemImportWizard">
 		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
 		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\박기수\Desktop\SSAFY\ssafy_spring_live\SpringDBMyBatis"/>
+			<item value="C:\Users\박기수\Desktop\과제 제출용\7-_-_3-_\2022.04.20\SpringDBMybatis"/>
+			<item value="C:\Users\박기수\Downloads\소스코드\220421\framework_0421_배포\guestbook_mybatis_spring"/>
+			<item value="C:\Users\박기수\Downloads\소스코드\220421\framework_0421_sol\guestbook_mybatis"/>
 			<item value="C:\Users\박기수\Downloads\spring_hw_2_2-master\spring_hw_2_2-master"/>
 			<item value="C:\Users\박기수\Downloads\소스코드\220419\framework_0419_배포\guestbook_file_interceptor"/>
 			<item value="C:\Users\박기수\Downloads\소스코드\220419\framework_0419_배포\guestbook_springmvc"/>

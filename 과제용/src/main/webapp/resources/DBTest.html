@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>MyBatis Test</h1>
+	<button id="btnEmpDetail">Emp 상세</button>
+	<button id="btnEmpList">Emp 목록</button>
+	<button id="btnEmpInsert">Emp 등록</button>
+	<button id="btnEmpUpdate">Emp 수정</button>
+	<button id="btnEmpDelete">Emp 삭제</button>
+	<br>
+	<button id="btnEmpInsertJSON">Emp JSON 등록</button>
+	<button id="btnEmpDetailPage">Emp 상세 페이지 이동</button>
+	<button id="btnEmpListResultMap">Emp 목록 ResultMap</button>
+	<button id="btnEmpListParameterMap">Emp 목록 PamareterMap</button>
+	<button id="btnEmpListLike">Emp 목록 Like</button>
+	<br><br>
+	<button id="btnDepartment">Department 페이지로 이동</button>
+	<script>
+		window.onload = function(){
+			document.querySelector("#btnDepartment").onclick = async function(){
+				// 백엔드로 특정 employeeId를 전송하면 백엔드에서 그 사원의 정보를 jsp로 보여준다.
+				window.location.href="/mybatis/resources/DepartmentTest.html"
+			}
+			
+			document.querySelector("#btnEmpDetail").onclick = async function(){
+				try{
+					let response = await fetch('/mybatis/empDetail/1500');
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			document.querySelector("#btnEmpDetailPage").onclick = async function(){
+				// 백엔드로 특정 employeeId를 전송하면 백엔드에서 그 사원의 정보를 jsp로 보여준다.
+				window.location.href="/mybatis/empDetailPage/1500"
+			}
+			document.querySelector("#btnEmpList").onclick = async function(){
+				try{
+					let response = await fetch('/mybatis/empList');
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			
+			document.querySelector("#btnEmpInsert").onclick = 
+				async function(){
+					let urlParams = new URLSearchParams({
+						employeeId: 2000,
+						firstName: "ny",
+						lastName: "Son",
+						email: "sonny@son.com",
+						hireDate: "2020-05-05"
+					})
+					
+					let fetchOptions = {
+						method: "POST",
+						body: urlParams
+					}
+				
+					try{
+						let response = await fetch('/mybatis/empInsert', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			let updateData = {
+				employeeId: 2000,
+				firstName: "흥민",
+				lastName: "손",
+				email: "sonny@son.com",
+				hireDate: "2020-05-05"
+			}
+			
+			document.querySelector("#btnEmpUpdate").onclick = 
+				async function(){
+					let urlParams = new URLSearchParams(updateData)
+					
+					let fetchOptions = {
+						method: "POST",
+						body: urlParams
+					}
+				
+					try{
+						let response = await fetch('/mybatis/empUpdate', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			document.querySelector("#btnEmpDelete").onclick = 
+				async function(){
+					let fetchOptions = {
+						method: "POST",
+						body: new URLSearchParams({employeeId: 2000})
+					}
+				
+					try{
+						let response = await fetch('/mybatis/empDelete', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			
+			
+			
+			let insertJSONData = {
+					employeeId: 2000,
+					firstName: "흥민",
+					lastName: "손",
+					email: "sonny@son.com",
+					hireDate: "2020-05-05"
+				}
+			document.querySelector("#btnEmpInsertJSON").onclick = 
+				async function(){
+					let fetchOptions = {
+						method: "POST",
+						headers: {
+							"Content-type": "application/json"
+						},
+						body: JSON.stringify(insertJSONData)
+					}
+				
+					try{
+						let response = await fetch('/mybatis/empInsertJSON', fetchOptions);
+						let data = await response.json();
+						console.log(data);
+					} catch(error){
+						console.error(error);
+				}
+			}
+			
+			document.querySelector("#btnEmpListResultMap").onclick = async function(){
+				try{
+					let response = await fetch('/mybatis/empListResultMap');
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+			
+			document.querySelector("#btnEmpListParameterMap").onclick = async function(){
+				let firstName = '길동';
+				let lastName = '홍';
+				//let url = '/mybatis/empListParameterMap'
+				//let url = '/mybatis/empListParameterMap2'
+				let url = '/mybatis/empListParameterMap3'
+				let urlParams = `?firstName=${firstName}&lastName=${lastName}`
+				try{
+					let response = await fetch(url + urlParams);
+					let data = await response.json();
+					console.log(data);
+				} catch(error){
+					console.error(error);
+				}
+			}
+
+			document.querySelector("#btnEmpListLike").onclick = async function(){
+				let searchWord = '길동';
+
+				let url = '/mybatis/empListLike';
+				let urlParams = `?searchWord=${searchWord}`;
+				try{
+					let response = await fetch(url + urlParams); // get
+					let data = await response.json();
+					console.log(data);
+				}catch(error){
+					console.error(error);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

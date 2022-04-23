@@ -76,12 +76,15 @@
 					let urlParams = new URLSearchParams(updateData)
 					
 					let fetchOptions = {
-						method: "PATCH",
-						body: urlParams
+						method: "PUT",
+						headers: {
+							"Content-type": "application/json"
+						},
+						body: JSON.stringify(insertJSONData)
 					}
 				
 					try{
-						let response = await fetch('/mybatis/department/update', fetchOptions);
+						let response = await fetch('/mybatis/department/2000', fetchOptions);
 						let data = await response.json();
 						console.log(data);
 					} catch(error){
@@ -92,12 +95,11 @@
 			document.querySelector("#btnDepartmentDelete").onclick = 
 				async function(){
 					let fetchOptions = {
-						method: "POST",
-						body: new URLSearchParams({departmentId: 2000})
+						method: "DELETE",
 					}
 				
 					try{
-						let response = await fetch('/mybatis/department/delete', fetchOptions);
+						let response = await fetch('/mybatis/department/1', fetchOptions);
 						let data = await response.json();
 						console.log(data);
 					} catch(error){
